@@ -4,6 +4,13 @@ const datalist = form.querySelector('.form__datalist')
 const repositories = document.querySelector('.list')
 
 
+function makeLoading(){
+    const template = listLoadingTemplate.content.firstElementChild;
+    const node = template.cloneNode(true)
+    return node
+}
+
+
 function makeRepo(item){
     const name = item.getAttribute("data-name")
     const owner = item.getAttribute("data-owner")
@@ -44,8 +51,9 @@ function makeOption(item){
 
     node.addEventListener('click', ()=>{
         const repo = makeRepo(node)
-        repositories.appendChild(repo)
         searchInput.value = ""
+        repositories.appendChild(repo)
+        datalist.innerHTML = ''
     })
 
     return node
@@ -81,16 +89,43 @@ const debounce = (fn, debounceTime) => {
     }
 };
 
-const autoComplete = debounce(()=>{
-    const searchQuery = searchInput.value;
-    fetch(getSearchURL(searchQuery))
-        .then(response => response.json())
+function hardFetch(query, time){
+    if(!time) time = 0;
+
+    // return fetch(getSearchURL(query))
+    //     .then(response => response.json())
+    //     .catch(()=> hardFetch(query))
+
+    return new Promise((resolve, reject)=>{
+        const timer = setTimeout(()=>{
+            fetch(getSearchURL(query))
+                .then(response => response.json())
+                .catch(()=> hardFetch(query, 500))
+                .then((result=>{
+                    clearTimeout(timer)
+                    resolve(result);
+                }))
+        }, time)
+    })
+}
+
+function getAutoComplete(query){
+        hardFetch(query)
         .then(json=>{
             const items = json.items
             const newItems = items.map(makeOption)
             datalist.replaceChildren(... newItems)
         })
         .catch(e=>console.log('Ошибка - ', e))
+}
+
+const autoComplete = debounce(()=>{
+    const searchQuery = searchInput.value;
+    if(searchQuery != ''){
+        datalist.replaceChildren(makeLoading())
+    }
+    getAutoComplete(searchQuery)
+    
 }, 100)
 
 searchInput.addEventListener('input', ()=>{
@@ -105,9 +140,13 @@ searchInput.addEventListener('focus', (evt)=>{
 })
 
 searchInput.addEventListener('blur', ()=>{
+    const searchQuery = searchInput.value;
     setTimeout(()=>{
         datalist.style['display'] = "none"
-        datalist.innerHTML = ''
+        // if(searchQuery == ''){
+        //     datalist.innerHTML = ''
+        //     datalist.replaceChildren(makeLoading())
+        // }
     }, 100)
     
 })

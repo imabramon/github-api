@@ -1,1 +1,13 @@
-@import './datalist.scss'
+@import './datalist.scss';
+@import './list-item.scss';
+@import './search-container.scss';
+
+*{
+    box-sizing: border-box;
+}
+
+.row{
+    display: flex;
+    flex-direction: row;
+    align-items: baseline;
+}

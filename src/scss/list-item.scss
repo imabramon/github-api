@@ -1,0 +1,22 @@
+.list-item{
+    position: relative;
+
+    padding: 16px;
+
+    &__text{
+        display: inline-block;
+    }
+
+    &__title{
+        display: inline-block;
+        margin-right: 8px ;
+    }
+
+    &__close-button{
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        border: 0;
+        padding: 0;
+    }
+}
