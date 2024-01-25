@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
+    />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title><%= htmlWebpackPlugin.options.title %></title>
+  </head>
+  <body>
+    <template id="listItemTemplate">
+      <li class="list-item">
+        <p class="list-item__text list-item__name">Name</p>
+        <p class="list-item__text list-item__owner">Owner</p>
+        <p class="list-item__text list-item__stars">Stars</p>
+        <button class="list-item__close-button">Delete</button>
+      </li>
+    </template>
+    <main>
+      <form class="form">
+        <input type="text" list="helper" class="form__input" pattern=".*\S.*" required>
+        <ul class="datalist form__datalist">
+        </ul>
+      </form>
+      <ul class="list">
+      </ul>
+    </main>
+  </body>
+</html>
