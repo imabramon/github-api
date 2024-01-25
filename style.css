@@ -1,0 +1,39 @@
+.datalist {
+  position: absolute;
+  background-color: white;
+  z-index: 1 !important;
+  width: 100%;
+  margin-top: 10px;
+  display: none; }
+
+.list-item {
+  position: relative;
+  padding: 16px; }
+  .list-item__text {
+    display: inline-block; }
+  .list-item__title {
+    display: inline-block;
+    margin-right: 8px; }
+  .list-item__close-button {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    border: 0;
+    padding: 0; }
+
+.search-container {
+  max-width: 480px;
+  padding: 10px;
+  margin-left: auto;
+  margin-right: auto; }
+
+* {
+  box-sizing: border-box; }
+
+.row {
+  display: flex;
+  flex-direction: row;
+  align-items: baseline; }
+
+
+/*# sourceMappingURL=style.css.map*/
