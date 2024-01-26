@@ -5,43 +5,48 @@
     <meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1,maximum-scale=1,minimum-scale=1">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+    
     <title>Webpack 4 Starter</title>
   <link href="style.css" rel="stylesheet"></head>
   <body>
+    <template id="listSorryTemplate">
+      <div class="notification is-danger">
+        Исчерпан лимит неавторизованных запросов. Перезагрузите страницу
+      </div>
+    </template>
     <template id="listLoadingTemplate">
       <progress class="progress is-small is-primary" max="100">15%</progress>
     </template>
     <template id="listItemTemplate">
+      
       <li class="list-item card block">
         <div class="row">
-          <p class="list-item__title title is-6">Name:</p>  
+          <p class="list-item__title title is-6">Name:</p>
           <p class="list-item__text list-item__name"></p>
         </div>
         <div class="row">
-          <p class="list-item__title title is-6">Owner:</p>  
+          <p class="list-item__title title is-6">Owner:</p>
           <p class="list-item__text list-item__owner block"></p>
         </div>
         <div class="row">
-          <p class="list-item__title title is-6">Stars:</p>  
+          <p class="list-item__title title is-6">Stars:</p>
           <p class="list-item__text list-item__stars block"></p>
         </div>
-        <button class="list-item__close-button icon button"><i class="fa-solid fa-trash" style="color: #fa0000;"></i></button>
+        <button class="list-item__close-button icon button"><i class="fa-solid fa-trash" style="color: #fa0000"></i></button>
       </li>
     </template>
     <main class="search-container">
       <div class="container block is-fullhd">
         <form class="form block">
           <input type="text" list="helper" class="form__input input" pattern=".*\S.*" required>
-          <ul class="datalist form__datalist block">
-          </ul>
+          <ul class="datalist form__datalist block"> </ul>
         </form>
-        
-        <ul class="list">
-          
-        </ul>
+
+        <ul class="list"> </ul>
       </div>
     </main>
 
     <script src="https://kit.fontawesome.com/f6f078ccc9.js" crossorigin="anonymous"></script>
+    
   <script type="text/javascript" src="./js/bundle.js"></script></body>
 </html>
