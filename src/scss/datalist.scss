@@ -1,9 +1,17 @@
-.datalist{
-    position: absolute;
-    background-color: white;
-    z-index: 1 !important;
-    width: 100%;
-    margin-top: 10px;
-    display: none;
-}
+.datalist {
+  position: absolute;
+  background-color: white;
+  z-index: 1 !important;
+  width: 100%;
+  margin-top: 10px;
+  display: none;
 
+  &__option {
+    padding: 4px;
+    &:hover {
+      background-color: hsl(171, 100%, 41%);
+      color: white;
+      border-radius: 4px;
+    }
+  }
+}
